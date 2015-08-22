@@ -1,0 +1,35 @@
+
+
+
+
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<com.example.apple1.smartmanager2.tools.SlidingMenu
+    android:id="@+id/menu"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <include layout="@layout/left_menu"/>
+
+        <FrameLayout android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+    </com.example.apple1.smartmanager2.tools.SlidingMenu>
+</RelativeLayout>
+
+
