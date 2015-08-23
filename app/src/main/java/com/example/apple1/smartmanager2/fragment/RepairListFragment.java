@@ -12,8 +12,11 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Switch;
 
 
+import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
 
 import java.util.ArrayList;
@@ -21,17 +24,13 @@ import java.util.ArrayList;
 /**
  * Created by draft on 2015/7/21.
  */
-public class RepairListFragment extends Fragment {
+public class RepairListFragment extends Fragment implements View.OnClickListener {
     /**
      * 上下文对象
      */
     public Context context;
     public Activity activity;
-    private ViewPager m_vp;
-    private MyRepairListFragment myRepair;
-    private AllRepairListFragment allRepair;
-    //页面列表
-    private ArrayList<Fragment> fragmentList;
+    private Button myButton,allButton;
 
     /**
      * 初始化操作
@@ -53,39 +52,58 @@ public class RepairListFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_repair_list, container,
                 false);
-        m_vp = (ViewPager)view.findViewById(R.id.viewpager);
 
-        myRepair = new MyRepairListFragment();
-        allRepair = new AllRepairListFragment();
+        //设置初始界面
+        setface();
+        //初始化控件
+        myButton=(Button)view.findViewById(R.id.btn_my);
+        allButton=(Button)view.findViewById(R.id.btn_all);
+        //设置监听
+        setOnClick();
 
-        fragmentList = new ArrayList<Fragment>();
-        fragmentList.add(myRepair);
-        fragmentList.add(allRepair);
 
-        m_vp.setAdapter(new MyViewPagerAdapter(getFragmentManager()));
 
         return view;
     }
 
-    //ViewPager的Adapter
+    private void setOnClick() {
+        myButton.setOnClickListener(this);
+        allButton.setOnClickListener(this);
+    }
 
-    public class MyViewPagerAdapter extends FragmentPagerAdapter {
-        public MyViewPagerAdapter(FragmentManager fm) {
-            super(fm);
-            // TODO Auto-generated constructor stub
+
+    private void setface() {
+
+        Fragment fragment;
+        FragmentManager fragmentManager = getChildFragmentManager();
+        fragment = new MyRepairListFragment();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit();
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        Fragment fragment;
+        FragmentManager fragmentManager = getChildFragmentManager();
+        switch (v.getId()){
+
+            case R.id.btn_my:
+                fragment = new MyRepairListFragment();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment)
+                        .commit();
+                break;
+
+            case R.id.btn_all:
+                fragment = new AllRepairListFragment();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment)
+                        .commit();
+                break;
+
         }
-
-        @Override
-        public Fragment getItem(int arg0) {
-            return fragmentList.get(arg0);
-        }
-
-        @Override
-        public int getCount() {
-            return fragmentList.size();
-        }
-
-
 
     }
 }

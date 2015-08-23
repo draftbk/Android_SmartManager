@@ -6,13 +6,13 @@
 
     <LinearLayout
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="9dp"
+        android:layout_height="40dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_my"
+            android:text="我的"
             android:layout_gravity="center"
             android:layout_marginLeft="100dp"
             android:layout_width="0dp"
@@ -21,6 +21,7 @@
 
         <Button
             android:id="@+id/btn_all"
+            android:text="所有"
             android:layout_gravity="center"
             android:layout_marginRight="100dp"
             android:layout_width="0dp"
@@ -29,15 +30,13 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        >
-        <android.support.v4.view.ViewPager android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v4.view.ViewPager>
-    </LinearLayout>
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+
 
 </LinearLayout>

@@ -61,7 +61,7 @@ public class EvaluationActivity extends Activity implements View.OnClickListener
                 Log.d("test","Jsmess"+Jsmess);
                 super.handleMessage(msg);
                 if (Jsmess.equals("1")){
-                    Toast.makeText(EvaluationActivity.this, "Á¬½ÓÊ§°Ü", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EvaluationActivity.this, "å•¦å•¦å•¦", Toast.LENGTH_SHORT).show();
                 }else {
                     try {
 
@@ -74,7 +74,7 @@ public class EvaluationActivity extends Activity implements View.OnClickListener
 
                     } catch (JSONException e) {
                         // TODO Auto-generated catch block
-                        Log.d("test","³ö´íÁË");
+                        Log.d("test","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                         e.printStackTrace();
                     }
                 }

@@ -59,8 +59,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         context = getActivity();
         activity = getActivity();
 
-
-
     }
 
     /**

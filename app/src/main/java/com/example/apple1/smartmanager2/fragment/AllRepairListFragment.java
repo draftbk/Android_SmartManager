@@ -1,5 +1,7 @@
 package com.example.apple1.smartmanager2.fragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,31 +12,36 @@ import com.example.apple1.smartmanager2.R;
 
 
 public class AllRepairListFragment extends Fragment {
+	public Context context;
+	public Activity activity;
+	private View view;
 	private View mMainView;
 	@Override
+	/**
+	 * 初始化操作
+	 */
+
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
+		context = getActivity();
+		activity = getActivity();
 
-		
-		LayoutInflater inflater = getActivity().getLayoutInflater();
-		mMainView = inflater.inflate(R.layout.fragment_all_repair, (ViewGroup)getActivity().findViewById(R.id.viewpager), false);
 	}
 
-	@Override
+	/**
+	 * 界面初始化
+	 */
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+							 Bundle savedInstanceState) {
+		super.onCreateView(inflater, container, savedInstanceState);
+		view = inflater.inflate(R.layout.fragment_all_repair, container,
+				false);
 
-		
-		ViewGroup p = (ViewGroup) mMainView.getParent(); 
-        if (p != null) { 
-            p.removeAllViewsInLayout(); 
-
-        } 
-		
-		return mMainView;
+		return view;
 	}
+
+
 	
 
 }
