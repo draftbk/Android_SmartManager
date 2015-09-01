@@ -307,20 +307,20 @@
 
 
         <Button
-            android:id="@+id/btn_check_evaluation"
-            android:text="查看反馈及评价"
-            android:textColor="#ffffff"
-            android:background="@drawable/record_detail_bluebutton"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:gravity="center"
-            />
+        android:id="@+id/btn_check_evaluation"
+        android:text="查看反馈及评价"
+        android:textColor="#ffffff"
+        android:background="@drawable/record_detail_bluebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
 
 
 

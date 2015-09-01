@@ -5,6 +5,41 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#00b7ee">
+
+        <ImageButton
+            android:id="@+id/button_back"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:background="@drawable/repairlist_slidemenu"
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="维修单"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:layout_weight="6"/>
+
+        <ImageButton
+            android:id="@+id/button_search"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:background="@drawable/repairlist_search"
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"

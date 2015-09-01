@@ -4,12 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="fill_parent" 
-        android:layout_height="wrap_content" 
-        android:text="第一个fragment"
-        />
-    
+
+
+
+    <ListView
+        android:id="@+id/listview_record"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:dividerHeight="10dp"
+        android:divider="#f0f0f0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
 </LinearLayout>
