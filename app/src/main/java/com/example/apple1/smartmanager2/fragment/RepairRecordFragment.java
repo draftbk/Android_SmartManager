@@ -21,9 +21,8 @@ import android.widget.Toast;
 import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
 import com.example.apple1.smartmanager2.activity.FinishedRepairBillActivity;
-import com.example.apple1.smartmanager2.adapter.RepairRecordAdapter;
+import com.example.apple1.smartmanager2.adapter.RepairAdapter;
 import com.example.apple1.smartmanager2.entity.RepairRecord;
-import com.example.apple1.smartmanager2.net.GetPicture;
 import com.example.apple1.smartmanager2.net.NetThread;
 import com.example.apple1.smartmanager2.tools.AutoString;
 import com.example.apple1.smartmanager2.tools.SlidingMenu;
@@ -46,7 +45,8 @@ public class RepairRecordFragment extends Fragment {
     private ListView listView;
     Bitmap bitmap;
     private Handler hanGetImage;
-    private RepairRecordAdapter adapter;
+//    private RepairRecordAdapter adapter;
+    private RepairAdapter adapter;
     private ArrayList<RepairRecord> repairRecordList;
     private Handler han;
     private String url="http://1.smartprotecter.sinaapp.com/sm/manager_id03.php";
@@ -135,7 +135,8 @@ public class RepairRecordFragment extends Fragment {
 
 
                     Log.d("test","activity"+"           "+activity);
-                    adapter=new RepairRecordAdapter (activity,R.layout.repair_item,repairRecordList);
+//                    adapter=new RepairRecordAdapter (activity,R.layout.repair_item,repairRecordList);
+                    adapter=new RepairAdapter(activity,R.layout.repair_item,repairRecordList,listView);
                     listView.setAdapter(adapter);
                     //Log.d("test", "exapmple" + example);
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -14,24 +14,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
 import com.example.apple1.smartmanager2.activity.AllRepairBillActivity;
-import com.example.apple1.smartmanager2.activity.FinishedRepairBillActivity;
-import com.example.apple1.smartmanager2.activity.MyRepairBillActivity;
-import com.example.apple1.smartmanager2.adapter.MyRepairAdapter;
-import com.example.apple1.smartmanager2.adapter.RepairRecordAdapter;
+import com.example.apple1.smartmanager2.adapter.RepairAdapter;
 import com.example.apple1.smartmanager2.entity.RepairRecord;
-import com.example.apple1.smartmanager2.net.GetPicture;
 import com.example.apple1.smartmanager2.net.NetThread;
 import com.example.apple1.smartmanager2.tools.AutoString;
-import com.example.apple1.smartmanager2.tools.SlidingMenu;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,7 +40,7 @@ public class AllRepairListFragment extends Fragment {
 	Bitmap bitmap;
 	private Handler hanGetImage;
 	private ListView listView;
-	private MyRepairAdapter adapter;
+	private RepairAdapter adapter;
 	private ArrayList<RepairRecord> repairRecordList;
 	private Handler han;
 	private String url="http://1.smartprotecter.sinaapp.com/sm/manager_id02.php";
@@ -121,7 +113,7 @@ public class AllRepairListFragment extends Fragment {
 
 
 					Log.d("test","activity"+"           "+activity);
-					adapter=new MyRepairAdapter (activity,R.layout.repair_item,repairRecordList,listView);
+					adapter=new RepairAdapter(activity,R.layout.repair_item,repairRecordList,listView);
 					listView.setAdapter(adapter);
 					//Log.d("test", "exapmple" + example);
 					listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

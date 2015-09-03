@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Created by draft on 2015/7/28.
  */
-public class MyRepairAdapter  extends ArrayAdapter<RepairRecord> {
+public class RepairAdapter extends ArrayAdapter<RepairRecord> {
 
     private Context context;
     private int resourceId;
@@ -35,7 +35,7 @@ public class MyRepairAdapter  extends ArrayAdapter<RepairRecord> {
     private ArrayList<Bitmap> bitmapArrayList=new ArrayList<Bitmap>();
 
 
-    public MyRepairAdapter(Context context,int textViewResourceId,List<RepairRecord> objects,ListView listView){
+    public RepairAdapter(Context context, int textViewResourceId, List<RepairRecord> objects, ListView listView){
         super(context,textViewResourceId,objects);
         this.context=context;
         resourceId=textViewResourceId;
