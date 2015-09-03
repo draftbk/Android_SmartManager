@@ -12,18 +12,31 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+
+import com.example.apple1.smartmanager2.tools.ChangeImagePath;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 /**
  * Created by draft on 2015/7/27.
  */
-public class GetPicture extends Thread{
+public class GetListPicture extends Thread{
     private String url;
     private Handler han;
+    private int position;
 
-
-    public GetPicture(Handler han,String url){
+    public GetListPicture(Handler han,String url,int position){
         this.han=han;
         this.url=url;
-
+        this.position=position;
     }
     @Override
     public void run() {
@@ -52,6 +65,7 @@ public class GetPicture extends Thread{
                 Log.d("test", "bitmap" + "       " + bitmap);
                 Message mess = new Message();
                 mess.obj = bitmap;
+                mess.what=position;
                 han.sendMessage(mess);
             }
 

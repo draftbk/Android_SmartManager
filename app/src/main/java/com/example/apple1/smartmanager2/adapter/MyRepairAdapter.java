@@ -11,13 +11,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
 import com.example.apple1.smartmanager2.R;
 import com.example.apple1.smartmanager2.entity.RepairRecord;
+import com.example.apple1.smartmanager2.net.GetListPicture;
 import com.example.apple1.smartmanager2.net.GetPicture;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,57 +31,65 @@ public class MyRepairAdapter  extends ArrayAdapter<RepairRecord> {
     private Context context;
     private int resourceId;
     private Handler hanGetImage;
-    Bitmap bitmap;
-    public MyRepairAdapter(Context context,int textViewResourceId,List<RepairRecord> objects){
+    private ListView listView;
+    private ArrayList<Bitmap> bitmapArrayList=new ArrayList<Bitmap>();
+
+
+    public MyRepairAdapter(Context context,int textViewResourceId,List<RepairRecord> objects,ListView listView){
         super(context,textViewResourceId,objects);
         this.context=context;
         resourceId=textViewResourceId;
+        this.listView=listView;
+
+
+
     }
 
     @Override
-    public View getView( int position,View convertView,ViewGroup parent){
+    public View getView( final int position,View convertView,ViewGroup parent){
         RepairRecord repairRecord=getItem(position);
         Log.d("test","repairRecord"+repairRecord);
+        //获取图片bitmap
+        String imageUrl=repairRecord.getImagePath();
+        Log.d("test","imageUrl"+imageUrl);
+        GetListPicture getlistPicture=new GetListPicture(hanGetImage,imageUrl,position);
+        getlistPicture.start();
         View view;
         final ViewHolder viewHolder;
-        if(convertView==null){
+//        if(convertView==null){
+            Log.d("test",  "convertView"+convertView);
             view= LayoutInflater.from(getContext()).inflate(resourceId,null);
             viewHolder=new ViewHolder();
             viewHolder.imageRepair=(ImageView)view.findViewById(R.id.image_repair);
+            viewHolder.imageRepair.setTag(position);
             viewHolder.location=(TextView)view.findViewById(R.id.text_location);
             viewHolder.phonenumber=(TextView)view.findViewById(R.id.text_phonenumber);
             viewHolder.bug=(TextView)view.findViewById(R.id.text_bug);
             view.setTag(viewHolder);
-        }else{
-            view=convertView;
-            viewHolder=(ViewHolder) view.getTag();
-        }
-        Log.d("test","repairRecord.getLocation()"+"         "+repairRecord.getLocation());
+//        }else{
+//            Log.d("test",  "convertViewelse"+convertView);
+//            view=convertView;
+//            viewHolder=(ViewHolder) view.getTag();
+//        }
         viewHolder.location.setText(repairRecord.getLocation());
-        Log.d("test", "viewHolder.location.getText().toString()" + "         " + viewHolder.location.getText().toString());
         viewHolder.phonenumber.setText(repairRecord.getPhonenumber());
         viewHolder.bug.setText(repairRecord.getSource());
-        //获取图片bitmap
-
-        String imageUrl=repairRecord.getImagePath();
-        GetPicture getPicture=new GetPicture(hanGetImage,imageUrl);
-        getPicture.start();
-
-        //设置图片
-
+        Log.d("test", "bitmapArrayList.size()" + "         " + bitmapArrayList.size());
         hanGetImage = new Handler() {
 
             @Override
             public void handleMessage(Message msg) {
                 // TODO Auto-generated method stub
+                Bitmap bitmap;
                 bitmap = (Bitmap) msg.obj;
                 super.handleMessage(msg);
-                Log.d("test", "viewHolder:" + viewHolder + "imageRepair:" + viewHolder.imageRepair + "bitmap:" + bitmap);
-                viewHolder.imageRepair.setImageBitmap(bitmap);
+                ImageView imageView=(ImageView)listView.findViewWithTag(msg.what);
+                if(imageView!=null){
+                    Log.d("test", "imageView.getTag()" + "         " + imageView.getTag());
+                    imageView.setImageBitmap(bitmap);
+                }
             }
         };
-
-
         return view;
     }
 

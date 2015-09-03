@@ -16,7 +16,7 @@
             android:layout_gravity="center"
             android:layout_width="0dp"
             android:background="@drawable/repairlist_slidemenu"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
             android:layout_weight="1"/>
 
         <TextView
@@ -24,9 +24,9 @@
             android:layout_height="match_parent"
             android:text="维修单"
             android:gravity="center"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textColor="#ffffff"
-            android:layout_weight="6"/>
+            android:layout_weight="11"/>
 
         <ImageButton
             android:id="@+id/button_search"
@@ -34,7 +34,7 @@
             android:layout_gravity="center"
             android:layout_width="0dp"
             android:background="@drawable/repairlist_search"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
             android:layout_weight="1"/>
 
     </LinearLayout>

@@ -4,6 +4,7 @@ package com.example.apple1.smartmanager2.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -26,6 +27,7 @@ import com.example.apple1.smartmanager2.activity.MyRepairBillActivity;
 import com.example.apple1.smartmanager2.adapter.MyRepairAdapter;
 import com.example.apple1.smartmanager2.adapter.RepairRecordAdapter;
 import com.example.apple1.smartmanager2.entity.RepairRecord;
+import com.example.apple1.smartmanager2.net.GetPicture;
 import com.example.apple1.smartmanager2.net.NetThread;
 import com.example.apple1.smartmanager2.tools.AutoString;
 import com.example.apple1.smartmanager2.tools.SlidingMenu;
@@ -42,6 +44,8 @@ public class MyRepairListFragment extends Fragment {
 	public Activity activity;
 	private View view;
 	private View mMainView;
+	Bitmap bitmap;
+	private Handler hanGetImage;
 	private ListView listView;
 	private MyRepairAdapter adapter;
 	private ArrayList<RepairRecord> repairRecordList;
@@ -102,6 +106,7 @@ public class MyRepairListFragment extends Fragment {
 						String location = temp.getString("address");
 						String bug=temp.getString("origin");
 						String imageUrl=temp.getString("image_path");
+
 						//生成repairRecord
 						RepairRecord repairRecord=new RepairRecord(sId,location,phoneNumber,bug,imageUrl);
 						Log.d("test", " repairRecord.toString()" +"               "+ repairRecord.toString());
@@ -114,7 +119,7 @@ public class MyRepairListFragment extends Fragment {
 
 
 					Log.d("test","activity"+"           "+activity);
-					adapter=new MyRepairAdapter (activity,R.layout.repair_item,repairRecordList);
+					adapter=new MyRepairAdapter (activity,R.layout.repair_item,repairRecordList,listView);
 					listView.setAdapter(adapter);
 					//Log.d("test", "exapmple" + example);
 					listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

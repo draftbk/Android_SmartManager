@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -16,6 +17,7 @@ import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
 import com.example.apple1.smartmanager2.net.NetThread;
 import com.example.apple1.smartmanager2.tools.AutoString;
+import com.example.apple1.smartmanager2.tools.DoubleClickJuage;
 import com.example.apple1.smartmanager2.tools.EncryptMD5;
 
 import org.json.JSONException;
@@ -28,6 +30,7 @@ import org.json.JSONObject;
 public class LoginActivity extends Activity {
     private ManagerData managerData;
     private  Button buttonLogin;
+    private ImageView imageViewId;
     private EditText editId,editPassword;
     private String url="http://1.smartprotecter.sinaapp.com/sm/login_m.php";
     private String id,password;
@@ -43,6 +46,12 @@ public class LoginActivity extends Activity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+
+
+                if (DoubleClickJuage.isFastDoubleClick()) {
+                    return;
+                }
+
                 //获取两个所填Id和Password
                 id=editId.getText().toString();
                 password=editPassword.getText().toString();
@@ -71,6 +80,8 @@ public class LoginActivity extends Activity {
     }
 
     private void init() {
+        imageViewId=(ImageView)findViewById(R.id.image_id);
+        imageViewId.setAlpha(210);
         buttonLogin=(Button)findViewById(R.id.button_login);
         editId=(EditText)findViewById(R.id.edit_id);
         editPassword=(EditText)findViewById(R.id.edit_password);

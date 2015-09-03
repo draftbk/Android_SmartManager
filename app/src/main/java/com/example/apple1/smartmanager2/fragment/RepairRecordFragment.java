@@ -3,6 +3,7 @@ package com.example.apple1.smartmanager2.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +23,7 @@ import com.example.apple1.smartmanager2.R;
 import com.example.apple1.smartmanager2.activity.FinishedRepairBillActivity;
 import com.example.apple1.smartmanager2.adapter.RepairRecordAdapter;
 import com.example.apple1.smartmanager2.entity.RepairRecord;
+import com.example.apple1.smartmanager2.net.GetPicture;
 import com.example.apple1.smartmanager2.net.NetThread;
 import com.example.apple1.smartmanager2.tools.AutoString;
 import com.example.apple1.smartmanager2.tools.SlidingMenu;
@@ -42,6 +44,8 @@ public class RepairRecordFragment extends Fragment {
     public Context context;
     public Activity activity;
     private ListView listView;
+    Bitmap bitmap;
+    private Handler hanGetImage;
     private RepairRecordAdapter adapter;
     private ArrayList<RepairRecord> repairRecordList;
     private Handler han;
@@ -49,6 +53,7 @@ public class RepairRecordFragment extends Fragment {
     private ManagerData managerData;
     private ImageButton buttonBack;
     private SlidingMenu mLeftMenu;
+    String sId,phoneNumber,location,bug,imageUrl;
 
     /**
      * 初始化操作
@@ -107,19 +112,23 @@ public class RepairRecordFragment extends Fragment {
                 try {
                     arr = new JSONArray(Jsmess);
                     Log.d("test", "arr" + arr);
+
                     for (int i = 0; i < arr.length(); i++) {
                         JSONObject temp = (JSONObject) arr.getJSONObject(i);
-                        String sId = temp.getString("s_id");
-                        String phoneNumber=temp.getString("phonenumber");
-                        String location = temp.getString("address");
-                        String bug=temp.getString("origin");
-                        String imageUrl=temp.getString("image_path");
-                        //生成repairRecord
-                        RepairRecord repairRecord=new RepairRecord(sId,location,phoneNumber,bug,imageUrl);
-                        Log.d("test", " repairRecord.toString()" +"               "+ repairRecord.toString());
-                        //加入列表
-                        Log.d("test", "repairRecordList" + repairRecordList);
-                        repairRecordList.add(repairRecord);
+
+                        sId = temp.getString("s_id");
+                        phoneNumber=temp.getString("phonenumber");
+                        location = temp.getString("address");
+                        bug=temp.getString("origin");
+                        imageUrl=temp.getString("image_path");
+
+                                RepairRecord repairRecord=new RepairRecord(sId,location,phoneNumber,bug,imageUrl);
+                                Log.d("test", " repairRecord.toString()" +"               "+ repairRecord.toString());
+                                //加入列表
+                                Log.d("test", "repairRecordList" + repairRecordList);
+                                repairRecordList.add(repairRecord);
+
+
 
                     }
 

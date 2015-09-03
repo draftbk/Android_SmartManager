@@ -1,5 +1,7 @@
 package com.example.apple1.smartmanager2.entity;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by draft on 2015/7/28.
  */
@@ -10,23 +12,17 @@ public class RepairRecord {
     private String source;
     private String imagePath;
 
+
     public RepairRecord(String s_id,String location, String phonenumber, String source, String imagePath) {
         this.s_id=s_id;
         this.location = location;
         this.phonenumber = phonenumber;
         this.source = source;
         this.imagePath = imagePath;
+
     }
 
-    @Override
-    public String toString() {
-        return "RepairRecord{" +"s_id"+s_id+'\''+
-                "location='" + location + '\'' +
-                ", phonenumber='" + phonenumber + '\'' +
-                ", source='" + source + '\'' +
-                ", imagePath='" + imagePath + '\'' +
-                '}';
-    }
+
 
     public String getS_id() {
         return s_id;
@@ -38,6 +34,17 @@ public class RepairRecord {
 
     public String getLocation() {
         return location;
+    }
+
+    @Override
+    public String toString() {
+        return "RepairRecord{" +
+                "s_id='" + s_id + '\'' +
+                ", location='" + location + '\'' +
+                ", phonenumber='" + phonenumber + '\'' +
+                ", source='" + source + '\'' +
+                ", imagePath='" + imagePath + '\'' +
+                '}';
     }
 
     public void setLocation(String location) {
