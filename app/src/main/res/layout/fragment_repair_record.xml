@@ -13,9 +13,10 @@
             android:id="@+id/button_back"
             android:src="@drawable/record_back"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:layout_width="0dp"
             android:background="@android:color/transparent"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
             android:layout_weight="1"/>
 
         <TextView
@@ -23,9 +24,9 @@
             android:layout_height="match_parent"
             android:text="维修记录"
             android:gravity="center"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textColor="#00b7ee"
-            android:layout_weight="8"/>
+            android:layout_weight="10"/>
 
     </LinearLayout>
 

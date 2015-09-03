@@ -41,6 +41,7 @@
                 android:background="@null"
                 android:gravity="center"
                 android:hint="账号"
+                android:textColor="#ffffff"
                 android:textColorHint="#c2e7f9" />
 
             <TextView
@@ -87,6 +88,7 @@
                 android:gravity="center"
                 android:hint="密码"
                 android:inputType="textPassword"
+                android:textColor="#ffffff"
                 android:textColorHint="#c2e7f9" />
 
             <TextView

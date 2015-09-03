@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
 
 import com.example.apple1.smartmanager2.entity.RepairDetail;
@@ -41,7 +42,9 @@ public class AllRepairBillActivity extends Activity implements View.OnClickListe
     private Button btnRepair;
     private String id;
     private String url="http://1.smartprotecter.sinaapp.com/sm/service_id01.php";
-    private Handler han,hanGetImage;
+    private String urlRepair="http://1.smartprotecter.sinaapp.com/sm/service_id02.php";
+    private Handler han,hanGetImage,hanRepair;
+    private ManagerData managerData;
     RepairDetail repairDetail=new RepairDetail();
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +94,8 @@ public class AllRepairBillActivity extends Activity implements View.OnClickListe
         btnRepair=(Button)findViewById(R.id.btn_repair);
         //返回的按钮
         btnback=(ImageButton)findViewById(R.id.button_back);
+        //获得manageData
+        managerData= (ManagerData) this.getApplication();
 
         hanGetImage = new Handler() {
             @Override
@@ -100,6 +105,21 @@ public class AllRepairBillActivity extends Activity implements View.OnClickListe
                 Log.d("test","bitmap"+"           "+bitmap);
                 super.handleMessage(msg);
                 image.setImageBitmap(bitmap);
+
+            }
+        };
+
+        hanRepair = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                // TODO Auto-generated method stub
+                String r= (String) msg.obj;
+                if (r.equals("0")){
+                    Toast.makeText(AllRepairBillActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(AllRepairBillActivity.this, "添加失败，请重试", Toast.LENGTH_SHORT).show();
+                }
+                super.handleMessage(msg);
 
             }
         };
@@ -176,6 +196,13 @@ public class AllRepairBillActivity extends Activity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn_repair:
+                AutoString autoString=new AutoString("s_id", id);
+                autoString.addToResult("m_id",managerData.getManagerId());
+                String params=autoString.getResult();
+                Log.d("test","params"+"       "+params);
+                NetThread nt=new NetThread(hanRepair,urlRepair,params);
+                nt.start();
+                finish();
                 break;
             case R.id.button_back:
                 finish();

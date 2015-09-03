@@ -13,11 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Switch;
 
 
 import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
+import com.example.apple1.smartmanager2.tools.SlidingMenu;
 
 import java.util.ArrayList;
 
@@ -31,6 +33,8 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
     public Context context;
     public Activity activity;
     private Button myButton,allButton;
+    private ImageButton menuButton;
+    private SlidingMenu mLeftMenu;
 
     /**
      * 初始化操作
@@ -58,6 +62,8 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
         //初始化控件
         myButton=(Button)view.findViewById(R.id.btn_my);
         allButton=(Button)view.findViewById(R.id.btn_all);
+        menuButton=(ImageButton)view.findViewById(R.id.button_menu);
+        mLeftMenu = (SlidingMenu) activity.findViewById(R.id.menu);
         //设置监听
         setOnClick();
 
@@ -69,6 +75,7 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
     private void setOnClick() {
         myButton.setOnClickListener(this);
         allButton.setOnClickListener(this);
+        menuButton.setOnClickListener(this);
     }
 
 
@@ -101,6 +108,10 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
                 fragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainer, fragment)
                         .commit();
+                break;
+
+            case R.id.button_menu:
+                mLeftMenu.toggle();
                 break;
 
         }
