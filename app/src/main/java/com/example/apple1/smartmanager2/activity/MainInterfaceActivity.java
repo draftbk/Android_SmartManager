@@ -1,18 +1,14 @@
 package com.example.apple1.smartmanager2.activity;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.TextureView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
@@ -21,9 +17,7 @@ import com.example.apple1.smartmanager2.fragment.RepairRecordFragment;
 import com.example.apple1.smartmanager2.fragment.SettingFragment;
 import com.example.apple1.smartmanager2.tools.SlidingMenu;
 
-import org.w3c.dom.Text;
-
-public class MainInterfaceActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainInterfaceActivity extends FragmentActivity implements View.OnClickListener {
     private TextView itemText1;
     private Button  itemButton2, itemButton3, itemButton4, itemButton5;
     private SlidingMenu mLeftMenu;
