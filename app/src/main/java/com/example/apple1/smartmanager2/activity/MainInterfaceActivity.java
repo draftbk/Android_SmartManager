@@ -38,8 +38,7 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
         //测试Application
         Toast.makeText(MainInterfaceActivity.this, managerData.getManagerId(),
                 Toast.LENGTH_SHORT).show();
-
-
+//
     }
 
     private void setface() {
