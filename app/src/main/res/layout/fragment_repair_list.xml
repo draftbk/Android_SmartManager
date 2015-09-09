@@ -50,19 +50,17 @@
             android:id="@+id/btn_my"
             android:text="我的"
             android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_marginLeft="105dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
 
         <Button
             android:id="@+id/btn_all"
             android:text="所有"
             android:layout_gravity="center"
-            android:layout_marginRight="100dp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_marginRight="105dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

@@ -1,97 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:background="@drawable/item_back">
+    android:layout_height="120dp"
+    android:weightSum="2"
+    android:background="#ffffff">
     
 
         
         <ImageView
             android:id="@+id/image_repair"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginBottom="18dp"
-            android:layout_width="20dp"
-            android:layout_height="match_parent" />I
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="100dp" />I
         
 
     
     <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1.2"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="18dp"
+            android:layout_height="33dp"
             android:orientation="horizontal">
 
             <TextView
                 android:text="地点:"
+                android:textSize="17dp"
                 android:textColor="#67cbf2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
 
             <TextView
                 android:id="@+id/text_location"
+                android:paddingLeft="10dp"
                 android:textColor="#000000"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="33dp"
             android:orientation="horizontal">
 
             <TextView
                 android:text="手机:"
+                android:textSize="17dp"
                 android:textColor="#67cbf2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
 
             <TextView
+                android:paddingLeft="10dp"
                 android:id="@+id/text_phonenumber"
                 android:textColor="#000000"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
 
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="33dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:text="故障:"
+                android:textSize="17dp"
                 android:textColor="#67cbf2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
 
             <TextView
+                android:paddingLeft="10dp"
                 android:id="@+id/text_bug"
                 android:textColor="#000000"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
 
         </LinearLayout>
 
