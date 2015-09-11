@@ -68,7 +68,7 @@ public class LoginActivity extends Activity {
                     AutoString autoString=new AutoString("account",id);
                     autoString.addToResult("password",password);
                     String params=autoString.getResult();
-                    Log.d("test","params"+params);
+                    Log.d("test1","params"+params);
                     //网络连接接口
                     NetThread nt=new NetThread(han,url,params);
                     nt.start();

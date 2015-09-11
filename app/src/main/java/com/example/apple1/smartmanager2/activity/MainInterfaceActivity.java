@@ -1,12 +1,17 @@
 package com.example.apple1.smartmanager2.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,13 +20,16 @@ import com.example.apple1.smartmanager2.R;
 import com.example.apple1.smartmanager2.fragment.RepairListFragment;
 import com.example.apple1.smartmanager2.fragment.RepairRecordFragment;
 import com.example.apple1.smartmanager2.fragment.SettingFragment;
+import com.example.apple1.smartmanager2.net.GetPicture;
 import com.example.apple1.smartmanager2.tools.SlidingMenu;
 
 public class MainInterfaceActivity extends FragmentActivity implements View.OnClickListener {
     private TextView itemText1;
+    private ImageView headImage;
     private Button  itemButton2, itemButton3, itemButton4, itemButton5;
     private SlidingMenu mLeftMenu;
     private ManagerData managerData;
+    private Handler hanGetImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,10 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
         setface();
         //初始化控件
         init();
+        //设置头像
+        GetPicture getPicture=new GetPicture(hanGetImage,managerData.getImagePath());
+        Log.d("test1", "managerData.getImagePath()" + "           " + managerData.getImagePath());
+        getPicture.start();
         //设置监听
         setOnClick();
 
@@ -50,11 +62,24 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
 
     private void init() {
         itemText1 = (TextView) findViewById(R.id.item_text_1);
+        headImage=(ImageView)findViewById(R.id.img1);
         itemButton2 = (Button) findViewById(R.id.item_button_2);
         itemButton3 = (Button) findViewById(R.id.item_button_3);
         itemButton4 = (Button) findViewById(R.id.item_button_4);
         itemButton5 = (Button) findViewById(R.id.item_button_5);
         mLeftMenu = (SlidingMenu) findViewById(R.id.menu);
+        itemText1.setText(managerData.getNickName());
+        hanGetImage = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                // TODO Auto-generated method stub
+                Bitmap bitmap = (Bitmap) msg.obj;
+                Log.d("test1", "bitmap" + "           " + bitmap);
+                super.handleMessage(msg);
+                headImage.setImageBitmap(bitmap);
+
+            }
+        };
     }
 
     private void setOnClick() {
@@ -74,8 +99,6 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
         FragmentManager fragmentManager = getSupportFragmentManager();
         switch (v.getId()) {
             case R.id.item_button_2:
-                Toast.makeText(MainInterfaceActivity.this, itemButton2.getText(),
-                        Toast.LENGTH_SHORT).show();
                 fragment = new RepairListFragment();
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, fragment)
@@ -83,8 +106,7 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
                 toggle();
                 break;
             case R.id.item_button_3:
-                Toast.makeText(MainInterfaceActivity.this, itemButton3.getText(),
-                        Toast.LENGTH_SHORT).show();
+
                 fragment = new RepairRecordFragment();
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, fragment)
@@ -92,8 +114,7 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
                 toggle();
                 break;
             case R.id.item_button_4:
-                Toast.makeText(MainInterfaceActivity.this, itemButton4.getText(),
-                        Toast.LENGTH_SHORT).show();
+
                 fragment = new SettingFragment();
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, fragment)

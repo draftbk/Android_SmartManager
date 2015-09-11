@@ -144,6 +144,13 @@ public class FinishedRepairBillActivity extends Activity implements View.OnClick
                     String imageUrl=temp.getString("image_path");
                     repairDetail.setImgurl(imageUrl);
                     String type=temp.getString("types");
+                    if (type.equals("1")){
+                        type="宿舍楼";
+                    }else if (type.equals("2")){
+                        type="教学楼";
+                    }else if(type.equals("3")){
+                        type="校园设施";
+                    }
                     repairDetail.setType(type);
                     String memo=temp.getString("memo");
                     repairDetail.setRemark(memo);

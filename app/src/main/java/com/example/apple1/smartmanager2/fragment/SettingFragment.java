@@ -129,7 +129,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         editPhoneNumber.setText(managerData.getManagerPhone());
         editNickname.setText(managerData.getNickName());
         //联网设置imageView
-        Log.d("test","managerData.getImagePath()"+"                 "+managerData.getImagePath());
+        Log.d("test1","managerData.getImagePath()"+"                 "+managerData.getImagePath());
         GetPicture getPicture=new GetPicture(hanGetImage,managerData.getImagePath());
         getPicture.start();
     }

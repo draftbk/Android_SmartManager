@@ -10,21 +10,20 @@
         android:orientation="horizontal" >
 
         <ImageButton
-            android:layout_marginLeft="10dp"
             android:id="@+id/button_back"
-            android:src="@drawable/record_back"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center"
-            android:layout_width="30dp"
-            android:background="@android:color/transparent"
-            android:layout_height="30dp" />
+            android:layout_width="20dp"
+            android:background="@drawable/record_back"
+            android:layout_height="25dp" />
 
         <TextView
-            android:layout_marginRight="40dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginRight="40dp"
             android:text="记录详细"
             android:gravity="center"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textColor="#00b7ee" />
 
     </LinearLayout>
