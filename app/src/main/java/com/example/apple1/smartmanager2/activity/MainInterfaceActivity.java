@@ -21,6 +21,7 @@ import com.example.apple1.smartmanager2.fragment.RepairListFragment;
 import com.example.apple1.smartmanager2.fragment.RepairRecordFragment;
 import com.example.apple1.smartmanager2.fragment.SettingFragment;
 import com.example.apple1.smartmanager2.net.GetPicture;
+import com.example.apple1.smartmanager2.tools.PictureChangeToRound;
 import com.example.apple1.smartmanager2.tools.SlidingMenu;
 
 public class MainInterfaceActivity extends FragmentActivity implements View.OnClickListener {
@@ -75,6 +76,9 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
                 // TODO Auto-generated method stub
                 Bitmap bitmap = (Bitmap) msg.obj;
                 Log.d("test1", "bitmap" + "           " + bitmap);
+                //把图片变圆
+                PictureChangeToRound pictureChangeToRound=new PictureChangeToRound();
+                bitmap= pictureChangeToRound.toRoundBitmap(bitmap);
                 super.handleMessage(msg);
                 headImage.setImageBitmap(bitmap);
 
