@@ -10,6 +10,8 @@ import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
+import com.nineoldandroids.view.ViewHelper;
+
 /**
  * Created by draft on 2015/7/25.
  */
@@ -151,6 +153,13 @@ public class SlidingMenu extends HorizontalScrollView {
         } else {
             openMenu();
         }
+    }
+
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        super.onScrollChanged(l, t, oldl, oldt);
+        float scale=l*1.0f/mMenuWidth;//1~0
+        ViewHelper.setTranslationX(mMenu,mMenuWidth*scale);
     }
 }
 
