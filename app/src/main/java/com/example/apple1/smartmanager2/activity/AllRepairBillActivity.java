@@ -199,7 +199,7 @@ public class AllRepairBillActivity extends Activity implements View.OnClickListe
                 AutoString autoString=new AutoString("s_id", id);
                 autoString.addToResult("m_id",managerData.getManagerId());
                 String params=autoString.getResult();
-                Log.d("test","params"+"       "+params);
+                Log.d("test1","params"+"       "+params);
                 NetThread nt=new NetThread(hanRepair,urlRepair,params);
                 nt.start();
                 finish();

@@ -35,10 +35,7 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
         init();
         //设置监听
         setOnClick();
-        //测试Application
-        Toast.makeText(MainInterfaceActivity.this, managerData.getManagerId(),
-                Toast.LENGTH_SHORT).show();
-//
+
     }
 
     private void setface() {
