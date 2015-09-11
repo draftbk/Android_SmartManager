@@ -81,7 +81,7 @@ public class RepairRecordFragment extends Fragment {
         //获得manageData
         managerData= (ManagerData) getActivity().getApplication();
         //初始化Button
-        buttonBack=(ImageButton)view.findViewById(R.id.button_back);
+        buttonBack=(ImageButton)view.findViewById(R.id.button_menu);
         // 添加监听
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override

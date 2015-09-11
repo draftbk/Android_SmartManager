@@ -82,7 +82,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
      */
     private void init() {
         managerData=(ManagerData) getActivity().getApplication();
-        buttonBack= (ImageButton) view.findViewById(R.id.button_back);
+        buttonBack= (ImageButton) view.findViewById(R.id.button_menu);
         buttonOk= (ImageButton) view.findViewById(R.id.button_ok);
         editPhoneNumber= (EditText) view.findViewById(R.id.edit_phone_number);
         imageHead= (ImageView) view.findViewById(R.id.image_head);

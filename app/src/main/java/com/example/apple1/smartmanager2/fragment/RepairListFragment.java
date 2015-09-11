@@ -114,6 +114,7 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
                 mLeftMenu.toggle();
                 break;
 
+
         }
 
     }
