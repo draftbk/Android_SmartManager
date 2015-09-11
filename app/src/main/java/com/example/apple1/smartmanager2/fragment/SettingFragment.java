@@ -24,6 +24,7 @@ import com.example.apple1.smartmanager2.R;
 import com.example.apple1.smartmanager2.net.GetPicture;
 import com.example.apple1.smartmanager2.net.NetThread;
 import com.example.apple1.smartmanager2.tools.AutoString;
+import com.example.apple1.smartmanager2.tools.PictureChangeToRound;
 import com.example.apple1.smartmanager2.tools.SlidingMenu;
 
 
@@ -95,6 +96,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 // TODO Auto-generated method stub
                 Bitmap bitmap = (Bitmap) msg.obj;
                 Log.d("test","bitmap"+"           "+bitmap);
+                //把图片变圆
+                PictureChangeToRound pictureChangeToRound=new PictureChangeToRound();
+                bitmap= pictureChangeToRound.toRoundBitmap(bitmap);
                 super.handleMessage(msg);
                 imageHead.setImageBitmap(bitmap);
 
@@ -142,20 +146,21 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                mLeftMenu.toggle();
                 break;
             case R.id.button_ok:
-                String newPhoneNumber=editPhoneNumber.getText().toString();
-                String newNickname=editNickname.getText().toString();
-                String newImageUrl="no picture now";
-                //添加要传入的参数，AutoString是自己写的方法
-                AutoString autoString=new AutoString("m_id",managerData.getManagerId());
-                autoString.addToResult("Nickname",newNickname);
-                autoString.addToResult("Phonenumber_m",newPhoneNumber);
-                autoString.addToResult("Icon_m",newImageUrl);
-                //要传入网络类的数据
-                String params=autoString.getResult();
-                String upLoadingUrl="http://1.smartprotecter.sinaapp.com/sm/change_m.php";
-                //开启网络
-                NetThread netThread=new NetThread(hanUpLoading,upLoadingUrl,params);
-                netThread.start();
+//                String newPhoneNumber=editPhoneNumber.getText().toString();
+//                String newNickname=editNickname.getText().toString();
+//                String newImageUrl="no picture now";
+//                //添加要传入的参数，AutoString是自己写的方法
+//                AutoString autoString=new AutoString("m_id",managerData.getManagerId());
+//                autoString.addToResult("Nickname",newNickname);
+//                autoString.addToResult("Phonenumber_m",newPhoneNumber);
+//                autoString.addToResult("Icon_m",newImageUrl);
+//                //要传入网络类的数据
+//                String params=autoString.getResult();
+//                String upLoadingUrl="http://1.smartprotecter.sinaapp.com/sm/change_m.php";
+//                //开启网络
+//                NetThread netThread=new NetThread(hanUpLoading,upLoadingUrl,params);
+//                netThread.start();
+                Toast.makeText(context, "该功能还在更新中", Toast.LENGTH_SHORT).show();
                 break;
         }
 

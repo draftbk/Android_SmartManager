@@ -34,7 +34,7 @@
             android:layout_marginRight="10dp"
             android:layout_gravity="center"
             android:layout_width="0dp"
-            android:background="@drawable/repairlist_search"
+            android:background="@drawable/search"
             android:layout_height="25dp"
             android:layout_weight="1"/>
 
