@@ -3,6 +3,7 @@ package com.example.apple1.smartmanager2.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,7 +39,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     public Context context;
     public Activity activity;
     public ManagerData managerData;
-    private ImageButton buttonOk;
+    private Button buttonOk,buttonAutoLanded;
     private ImageButton buttonBack;
     private EditText editPhoneNumber;
     private ImageView imageHead;
@@ -73,7 +74,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         init();
         initializeTable();
         buttonBack.setOnClickListener(this);
-//        buttonOk.setOnClickListener(this);
+        buttonOk.setOnClickListener(this);
+        buttonAutoLanded.setOnClickListener(this);
         return view;
     }
 
@@ -84,7 +86,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     private void init() {
         managerData=(ManagerData) getActivity().getApplication();
         buttonBack= (ImageButton) view.findViewById(R.id.button_menu);
-        buttonOk= (ImageButton) view.findViewById(R.id.button_ok);
+        buttonOk= (Button) view.findViewById(R.id.btn_ok);
+        buttonAutoLanded=(Button)view.findViewById(R.id.btn_autolanded);
         editPhoneNumber= (EditText) view.findViewById(R.id.edit_phone_number);
         imageHead= (ImageView) view.findViewById(R.id.image_head);
         editPhoneNumber= (EditText) view.findViewById(R.id.edit_phone_number);
@@ -129,6 +132,13 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
      * 把表格原来的数据填了
      */
     private void initializeTable() {
+        //设置按钮的字以及得到自动登陆状态
+        SharedPreferences pref=context.getSharedPreferences("LandedJuage",Context.MODE_PRIVATE);
+        if (pref.getBoolean("AutoLanded",false)){
+            buttonAutoLanded.setText("取消自动登陆");
+        }else {
+            buttonAutoLanded.setText("设为自动登陆");
+        }
         //设置editText中的值
         editPhoneNumber.setText(managerData.getManagerPhone());
         editNickname.setText(managerData.getNickName());
@@ -145,7 +155,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 //切换到侧滑菜单
                mLeftMenu.toggle();
                 break;
-            case R.id.button_ok:
+            case R.id.btn_ok:
 //                String newPhoneNumber=editPhoneNumber.getText().toString();
 //                String newNickname=editNickname.getText().toString();
 //                String newImageUrl="no picture now";
@@ -161,6 +171,22 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
 //                NetThread netThread=new NetThread(hanUpLoading,upLoadingUrl,params);
 //                netThread.start();
                 Toast.makeText(context, "该功能还在更新中", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.btn_autolanded:
+                /**
+                 * 设置自动登陆以及取消自动登陆
+                 */
+                if (buttonAutoLanded.getText().equals("设为自动登陆")){
+                    SharedPreferences.Editor editor=context.getSharedPreferences("LandedJuage", Context.MODE_PRIVATE).edit();
+                    editor.putBoolean("AutoLanded",true);
+                    editor.commit();
+                    buttonAutoLanded.setText("取消自动登陆");
+                }else {
+                    SharedPreferences.Editor editor=context.getSharedPreferences("LandedJuage", Context.MODE_PRIVATE).edit();
+                    editor.putBoolean("AutoLanded",false);
+                    editor.commit();
+                    buttonAutoLanded.setText("设为自动登陆");
+                }
                 break;
         }
 
