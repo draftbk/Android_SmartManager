@@ -1,6 +1,8 @@
 package com.example.apple1.smartmanager2.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -126,6 +128,11 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
                 toggle();
                 break;
             case R.id.item_button_5:
+                //取消自动登陆
+                SharedPreferences.Editor editor=getSharedPreferences("LandedJuage", MODE_PRIVATE).edit();
+                editor.putBoolean("AutoLanded",false);
+                editor.commit();
+                //跳转
                 Intent intent =new Intent(MainInterfaceActivity.this,LoginActivity.class);
                 startActivity(intent);
                 finish();

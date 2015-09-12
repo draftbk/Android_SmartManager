@@ -42,7 +42,7 @@ public class AllRepairBillActivity extends Activity implements View.OnClickListe
     private Button btnRepair;
     private String id;
     private String url="http://1.smartprotecter.sinaapp.com/sm/service_id01.php";
-    private String urlRepair="http://1.smartprotecter.sinaapp.com/sm/service_id02.php";
+    private String urlRepair="http://1.smartprotecter.sinaapp.com/sm/choose_services.php";
     private Handler han,hanGetImage,hanRepair;
     private ManagerData managerData;
     RepairDetail repairDetail=new RepairDetail();
@@ -116,6 +116,7 @@ public class AllRepairBillActivity extends Activity implements View.OnClickListe
                 String r= (String) msg.obj;
                 if (r.equals("0")){
                     Toast.makeText(AllRepairBillActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+
                 }else{
                     Toast.makeText(AllRepairBillActivity.this, "添加失败，请重试", Toast.LENGTH_SHORT).show();
                 }
@@ -206,9 +207,11 @@ public class AllRepairBillActivity extends Activity implements View.OnClickListe
                 AutoString autoString=new AutoString("s_id", id);
                 autoString.addToResult("m_id",managerData.getManagerId());
                 String params=autoString.getResult();
-                Log.d("test1","params"+"       "+params);
+                Log.d("test1", "params" + "       " + params);
                 NetThread nt=new NetThread(hanRepair,urlRepair,params);
                 nt.start();
+                Intent intent1 = new Intent(AllRepairBillActivity.this,MainInterfaceActivity.class);
+                startActivity(intent1);
                 finish();
                 break;
             case R.id.button_back:
