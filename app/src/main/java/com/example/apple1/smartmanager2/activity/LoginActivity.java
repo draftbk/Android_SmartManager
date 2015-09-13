@@ -38,12 +38,15 @@ public class LoginActivity extends Activity {
     private ManagerData managerData;
     private  Button buttonLogin;
     private ImageView imageViewId;
+    private ImageView imageViewHead;
     private EditText editId,editPassword;
     private String url="http://1.smartprotecter.sinaapp.com/sm/login_m.php";
+    private String urlImagePath="http://1.smartprotecter.sinaapp.com/sm/icon_m.php";
     private String id,password;
     private Handler han;
     private String managerId,managerPhone,imagePath,nickName;
     private Handler hanGetImage;
+    private Handler hanGetUrl;
 //    private List<NameValuePair> params;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,36 +55,37 @@ public class LoginActivity extends Activity {
         //初始化
         init();
 
-//        editId.addTextChangedListener(new TextWatcher() {
-//
-//            @Override
-//            public void onTextChanged(CharSequence text, int start, int before, int count) {
-//                //text  输入框中改变后的字符串信息
-//                //start 输入框中改变后的字符串的起始位置
-//                //before 输入框中改变前的字符串的位置 默认为0
-//                //count 输入框中改变后的一共输入字符串的数量
-//                Log.d("test1","1");
-//            }
-//
-//            @Override
-//            public void beforeTextChanged(CharSequence text, int start, int count, int after) {
-//                //text  输入框中改变前的字符串信息
-//                //start 输入框中改变前的字符串的起始位置
-//                //count 输入框中改变前后的字符串改变数量一般为0
-//                //after 输入框中改变后的字符串与起始位置的偏移量
-//                Log.d("test1","2");
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable edit) {
-//                //edit  输入结束呈现在输入框中的信息
-//                  String temporaryId=editId.getText().toString();
-//                GetPicture getPicture=new GetPicture(hanGetImage,managerData.getImagePath());
-//                Log.d("test1", "managerData.getImagePath()" + "           " + managerData.getImagePath());
-//                getPicture.start();
-//                  Log.d("test1","3");
-//            }
-//        });
+        editId.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence text, int start, int before, int count) {
+                //text  输入框中改变后的字符串信息
+                //start 输入框中改变后的字符串的起始位置
+                //before 输入框中改变前的字符串的位置 默认为0
+                //count 输入框中改变后的一共输入字符串的数量
+                Log.d("test1","1");
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence text, int start, int count, int after) {
+                //text  输入框中改变前的字符串信息
+                //start 输入框中改变前的字符串的起始位置
+                //count 输入框中改变前后的字符串改变数量一般为0
+                //after 输入框中改变后的字符串与起始位置的偏移量
+                Log.d("test1","2");
+            }
+
+            @Override
+            public void afterTextChanged(Editable edit) {
+                //edit  输入结束呈现在输入框中的信息
+                  String temporaryId=editId.getText().toString();
+                AutoString autoString=new AutoString("account",temporaryId);
+                String params=autoString.getResult();
+                NetThread nt=new NetThread(hanGetUrl,urlImagePath,params);
+                nt.start();
+
+            }
+        });
 
         //检测自动登陆
         SharedPreferences pref=getSharedPreferences("LandedJuage", MODE_PRIVATE);
@@ -142,6 +146,7 @@ public class LoginActivity extends Activity {
     }
 
     private void init() {
+        imageViewHead=(ImageView)findViewById(R.id.image_head);
         imageViewId=(ImageView)findViewById(R.id.image_id);
         imageViewId.setAlpha(210);
         buttonLogin=(Button)findViewById(R.id.button_login);
@@ -156,10 +161,39 @@ public class LoginActivity extends Activity {
                 Bitmap bitmap = (Bitmap) msg.obj;
                 Log.d("test1", "bitmap" + "           " + bitmap);
                 //把图片变圆
-                PictureChangeToRound pictureChangeToRound=new PictureChangeToRound();
-                bitmap= pictureChangeToRound.toRoundBitmap(bitmap);
+//                PictureChangeToRound pictureChangeToRound=new PictureChangeToRound();
+//                bitmap= pictureChangeToRound.toRoundBitmap(bitmap);
                 super.handleMessage(msg);
-                imageViewId.setImageBitmap(bitmap);
+                imageViewHead.setImageBitmap(bitmap);
+
+            }
+        };
+
+        hanGetUrl = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                // TODO Auto-generated method stub
+               String Jsmess = (String) msg.obj;
+
+                if(Jsmess.equals("1")){
+                    imageViewHead.setImageResource(R.drawable.login_head);
+                    Log.d("test1","应该是这里啊！");
+                }else {
+                    //获取JSON对象
+                    JSONObject temp = null;
+                    try {
+                        temp = new JSONObject(Jsmess);
+                        //得到数据
+                        String urlImage = temp.getString("image_path");
+                        GetPicture getPicture=new GetPicture(hanGetImage,urlImage);
+                        getPicture.start();
+                        Log.d("test1","出现了");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
 
             }
         };
