@@ -151,7 +151,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.button_back:
+            case R.id.button_menu:
                 //切换到侧滑菜单
                mLeftMenu.toggle();
                 break;

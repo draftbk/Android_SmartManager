@@ -43,23 +43,29 @@
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
+        android:layout_marginLeft="95dp"
+        android:layout_marginRight="95dp"
         android:layout_height="40dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_my"
+            android:background="@drawable/btn_my_left"
             android:text="我的"
+            android:textColor="#ffffff"
             android:layout_gravity="center"
-            android:layout_marginLeft="105dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent" />
 
         <Button
             android:id="@+id/btn_all"
+            android:background="@drawable/btn_my_right"
             android:text="所有"
+            android:textColor="#00b7ee"
             android:layout_gravity="center"
-            android:layout_marginRight="105dp"
-            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:layout_height="match_parent" />
 
     </LinearLayout>
