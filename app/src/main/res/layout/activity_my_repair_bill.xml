@@ -330,6 +330,19 @@
                 android:layout_marginRight="10dp"
                 />
 
+            <Button
+                android:id="@+id/btn_finish"
+                android:text="完成"
+                android:textColor="#ffffff"
+                android:background="@drawable/record_detail_bluebutton"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="right|center"
+                android:gravity="center"
+                />
+
 
         </LinearLayout>
 

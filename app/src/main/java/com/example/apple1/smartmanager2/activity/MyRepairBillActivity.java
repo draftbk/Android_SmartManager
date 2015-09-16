@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
 
 import com.example.apple1.smartmanager2.entity.RepairDetail;
@@ -38,9 +39,12 @@ public class MyRepairBillActivity extends Activity implements View.OnClickListen
     private TextView textLocation=null,textPhoneNumber=null,textRepairType=null,
             textSource=null,textRepresentation=null,textRemark=null,textStates=null;
     private ImageButton btnCall=null,btnback=null;
+    private Button btnFinish;
     private String id;
     private String url="http://1.smartprotecter.sinaapp.com/sm/service_id01.php";
-    private Handler han,hanGetImage;
+    private String urlFinish="http://1.smartprotecter.sinaapp.com/sm/service_id02.php";
+    private Handler han,hanGetImage,hanFinish;
+    private ManagerData managerData;
     RepairDetail repairDetail=new RepairDetail();
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class MyRepairBillActivity extends Activity implements View.OnClickListen
         getRepairDetail();
         btnCall.setOnClickListener(this);
         btnback.setOnClickListener(this);
+        btnFinish.setOnClickListener(this);
     }
 
 
@@ -88,6 +93,27 @@ public class MyRepairBillActivity extends Activity implements View.OnClickListen
         btnCall=(ImageButton)findViewById(R.id.btn_call);
         //返回的按钮
         btnback=(ImageButton)findViewById(R.id.button_back);
+        //完成的按钮
+        btnFinish=(Button)findViewById(R.id.btn_finish);
+
+        //获得manageData
+        managerData= (ManagerData) this.getApplication();
+
+        hanFinish = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                // TODO Auto-generated method stub
+                String r= (String) msg.obj;
+                if (r.equals("0")){
+                    Toast.makeText(MyRepairBillActivity.this, "已添加到完成列表", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    Toast.makeText(MyRepairBillActivity.this, "系统出现问题，请重试", Toast.LENGTH_SHORT).show();
+                }
+                super.handleMessage(msg);
+
+            }
+        };
 
         hanGetImage = new Handler() {
             @Override
@@ -181,12 +207,18 @@ public class MyRepairBillActivity extends Activity implements View.OnClickListen
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
                 startActivity(intent);
                 break;
-            case R.id.btn_check_evaluation:
-                Intent intent1=new Intent(MyRepairBillActivity.this,EvaluationActivity.class);
-                intent1.putExtra("s_id",id);
-                startActivity(intent1);
-                break;
             case R.id.button_back:
+                finish();
+                break;
+            case R.id.btn_finish:
+                AutoString autoString=new AutoString("s_id", id);
+                autoString.addToResult("m_id",managerData.getManagerId());
+                String params=autoString.getResult();
+                Log.d("test1", "params" + "       " + params);
+                NetThread nt=new NetThread(hanFinish,urlFinish,params);
+                nt.start();
+                Intent intent1 = new Intent(MyRepairBillActivity.this,MainInterfaceActivity.class);
+                startActivity(intent1);
                 finish();
                 break;
             default:
