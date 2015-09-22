@@ -104,11 +104,11 @@ public class MyRepairBillActivity extends Activity implements View.OnClickListen
             public void handleMessage(Message msg) {
                 // TODO Auto-generated method stub
                 String r= (String) msg.obj;
-                if (r.equals("0")){
-                    Toast.makeText(MyRepairBillActivity.this, "已添加到完成列表", Toast.LENGTH_SHORT).show();
+                if (r.equals("1")){
+                    Toast.makeText(MyRepairBillActivity.this, "系统出现问题，请重试", Toast.LENGTH_SHORT).show();
 
                 }else{
-                    Toast.makeText(MyRepairBillActivity.this, "系统出现问题，请重试", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyRepairBillActivity.this, "已添加到完成列表", Toast.LENGTH_SHORT).show();
                 }
                 super.handleMessage(msg);
 
