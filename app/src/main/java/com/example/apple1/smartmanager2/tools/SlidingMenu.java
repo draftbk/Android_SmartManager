@@ -46,7 +46,7 @@ public class SlidingMenu extends HorizontalScrollView {
         //屏幕宽度
         mScreenWidth=outMetrics.widthPixels;
         //用TypedValue把dp转化为一个px(像素值)  ,TypedValue.COMPLEX_UNIT_DIP指50的类型是dp
-        mMenuRightPadding= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,130,context.getResources().getDisplayMetrics());
+        mMenuRightPadding= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,80,context.getResources().getDisplayMetrics());
 
     }
 
@@ -159,7 +159,24 @@ public class SlidingMenu extends HorizontalScrollView {
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
         float scale=l*1.0f/mMenuWidth;//1~0
-        ViewHelper.setTranslationX(mMenu,mMenuWidth*scale);
+
+
+        float rightScale=0.7f+0.3f*scale;
+        float leftScale=1.0f-scale*0.3f;
+        float leftAlpha=0.6f+0.4f*(1-scale);
+        // 调用属性动画，设置TranslationX
+        ViewHelper.setTranslationX(mMenu,mMenuWidth*scale*0.8f);
+        ViewHelper.setScaleX(mMenu, leftScale);
+        ViewHelper.setScaleY(mMenu, leftScale);
+        ViewHelper.setAlpha(mMenu,leftAlpha);
+        //设置缩放中心
+        ViewHelper.setPivotX(mContent,0);
+        ViewHelper.setPivotY(mContent,mContent.getHeight()/2);
+
+        ViewHelper.setScaleX(mContent, rightScale);
+        ViewHelper.setScaleY(mContent, rightScale);
+
+
     }
 }
 
