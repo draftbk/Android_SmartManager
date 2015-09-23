@@ -2,14 +2,12 @@ package com.example.apple1.smartmanager2.fragment;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,9 +21,7 @@ import android.widget.Toast;
 import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
 import com.example.apple1.smartmanager2.net.GetPicture;
-import com.example.apple1.smartmanager2.net.NetThread;
-import com.example.apple1.smartmanager2.tools.AutoString;
-import com.example.apple1.smartmanager2.tools.PictureChangeToRound;
+import com.example.apple1.smartmanager2.tools.pictureChangeToRound;
 import com.example.apple1.smartmanager2.tools.SlidingMenu;
 
 
@@ -100,7 +96,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 Bitmap bitmap = (Bitmap) msg.obj;
                 Log.d("test","bitmap"+"           "+bitmap);
                 //把图片变圆
-                PictureChangeToRound pictureChangeToRound=new PictureChangeToRound();
+                pictureChangeToRound pictureChangeToRound=new com.example.apple1.smartmanager2.tools.pictureChangeToRound();
                 bitmap= pictureChangeToRound.toRoundBitmap(bitmap);
                 super.handleMessage(msg);
                 imageHead.setImageBitmap(bitmap);
