@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="95dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -30,7 +30,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/img1"
                 android:layout_marginLeft="20dp"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="30sp"
                 />
 
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_gravity="bottom"
-            android:background="#000000" />
+            android:background="#ffffff" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/slide_list"/>
+                android:src="@drawable/slide_list_change"/>
 
             <Button
                 android:id="@+id/item_button_2"
@@ -66,7 +66,7 @@
                 android:text="维修单"
                 android:layout_marginLeft="20dp"
                 android:textSize="18dp"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 />
         </RelativeLayout>
 
@@ -89,12 +89,12 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/slide_mylist"/>
+                android:src="@drawable/slide_mylist_change"/>
 
             <Button
                 android:id="@+id/item_button_3"
                 android:background="#00000000"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/img3"
@@ -126,7 +126,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/slide_setting"/>
+                android:src="@drawable/slide_setting_change"/>
 
             <Button
                 android:id="@+id/item_button_4"
@@ -137,7 +137,7 @@
                 android:layout_centerVertical="true"
                 android:gravity="left|center"
                 android:text="设置"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:layout_marginLeft="20dp"
                 android:textSize="18dp"
                 />
@@ -163,7 +163,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/slide_out"/>
+                android:src="@drawable/slide_out_white"/>
 
             <Button
                 android:id="@+id/item_button_5"
@@ -174,7 +174,7 @@
                 android:layout_centerVertical="true"
                 android:gravity="left|center"
                 android:text="退出登录"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:layout_marginLeft="20dp"
                 android:textSize="18dp"
 
