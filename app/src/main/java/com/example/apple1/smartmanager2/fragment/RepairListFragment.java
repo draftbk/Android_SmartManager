@@ -2,6 +2,7 @@ package com.example.apple1.smartmanager2.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -79,6 +80,7 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
     }
 
 
+
     private void setface() {
 
         Fragment fragment;
@@ -97,6 +99,10 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
         switch (v.getId()){
 
             case R.id.btn_my:
+                myButton.setBackgroundResource(R.drawable.my_chosen);
+                myButton.setTextColor(0xffffffff);
+                allButton.setTextColor(0xff00b7ee);
+                allButton.setBackgroundResource(R.drawable.all_unchosen);
                 fragment = new MyRepairListFragment();
                 fragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainer, fragment)
@@ -104,6 +110,10 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
                 break;
 
             case R.id.btn_all:
+                myButton.setBackgroundResource(R.drawable.my_unchosen);
+                myButton.setTextColor(0xff00b7ee);
+                allButton.setTextColor(0xffffffff);
+                allButton.setBackgroundResource(R.drawable.all_chosen);
                 fragment = new AllRepairListFragment();
                 fragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainer, fragment)

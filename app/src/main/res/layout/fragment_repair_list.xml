@@ -61,7 +61,7 @@
 
         <Button
             android:id="@+id/btn_my"
-            android:background="@drawable/btn_my_left"
+            android:background="@drawable/my_chosen"
             android:text="我的"
             android:textColor="#ffffff"
             android:layout_gravity="center"
@@ -71,7 +71,7 @@
 
         <Button
             android:id="@+id/btn_all"
-            android:background="@drawable/btn_my_right"
+            android:background="@drawable/all_unchosen"
             android:text="所有"
             android:textColor="#00b7ee"
             android:layout_gravity="center"
