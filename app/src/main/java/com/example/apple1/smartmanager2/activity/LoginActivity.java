@@ -25,7 +25,7 @@ import com.example.apple1.smartmanager2.net.NetThread;
 import com.example.apple1.smartmanager2.tools.AutoString;
 import com.example.apple1.smartmanager2.tools.DoubleClickJuage;
 import com.example.apple1.smartmanager2.tools.EncryptMD5;
-import com.example.apple1.smartmanager2.tools.PictureChangeToRound;
+import com.example.apple1.smartmanager2.tools.pictureChangeToRound;
 
 import org.json.JSONException;
 import org.json.JSONObject;
