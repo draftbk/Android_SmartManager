@@ -24,9 +24,12 @@
         <activity android:name=".activity.AllRepairBillActivity"></activity>
         <activity android:name=".activity.FinishedRepairBillActivity"></activity>
         <activity android:name=".activity.EvaluationActivity"></activity>
-<service android:name=".Application.GetService">
 
-</service>
+        <service android:name=".Application.GetService">
+            <intent-filter>
+                <action android:name="com.example.service"></action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
