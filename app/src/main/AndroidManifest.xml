@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.apple1.smartmanager2" >
+          package="com.example.apple1.smartmanager2">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
 
+    <application
+        android:name=".Application.ManagerData"
+        android:theme="@style/AppTheme"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="true">
+        <activity
+            android:name=".activity.MainInterfaceActivity"
+            android:label="@string/app_name"></activity>
+        <activity android:name=".activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MyRepairBillActivity"></activity>
+        <activity android:name=".activity.AllRepairBillActivity"></activity>
+        <activity android:name=".activity.FinishedRepairBillActivity"></activity>
+        <activity android:name=".activity.EvaluationActivity"></activity>
+<service android:name=".Application.GetService">
 
-    -<application android:name=".Application.ManagerData" android:theme="@style/AppTheme" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:allowBackup="true">
-
-    <activity android:name=".activity.MainInterfaceActivity" android:label="@string/app_name"> </activity>
-
-
-    -<activity android:name=".activity.LoginActivity">
-
-
-    -<intent-filter>
-
-    <action android:name="android.intent.action.MAIN"/>
-
-    <category android:name="android.intent.category.LAUNCHER"/>
-
-</intent-filter>
-
-</activity>
-
-    <activity android:name=".activity.MyRepairBillActivity"> </activity>
-
-    <activity android:name=".activity.AllRepairBillActivity"> </activity>
-
-    <activity android:name=".activity.FinishedRepairBillActivity"> </activity>
-
-    <activity android:name=".activity.EvaluationActivity"> </activity>
-
-</application>
+</service>
+    </application>
 
 </manifest>
