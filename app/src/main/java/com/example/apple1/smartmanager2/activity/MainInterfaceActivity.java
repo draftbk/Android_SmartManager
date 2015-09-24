@@ -14,14 +14,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.apple1.smartmanager2.Application.Application;
 import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
 import com.example.apple1.smartmanager2.fragment.RepairListFragment;
 import com.example.apple1.smartmanager2.fragment.RepairRecordFragment;
 import com.example.apple1.smartmanager2.fragment.SettingFragment;
+import com.example.apple1.smartmanager2.net.GetCount;
 import com.example.apple1.smartmanager2.net.GetPicture;
 import com.example.apple1.smartmanager2.tools.SlidingMenu;
 import com.example.apple1.smartmanager2.tools.pictureChangeToRound;
+
+import org.json.JSONException;
 
 public class MainInterfaceActivity extends FragmentActivity implements View.OnClickListener {
     private TextView itemText1;
@@ -46,6 +50,13 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
         getPicture.start();
         //设置监听
         setOnClick();
+        new GetCount(new GetCount.SuccessCallBack() {
+            @Override
+            public void onSuccess(String result) throws JSONException {
+                Application.INT_LAST = Integer.parseInt(result);
+
+            }
+        });
         GetNotification();
 
     }
@@ -137,8 +148,12 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
      * 后台开启服务
      */
     void GetNotification() {
-        Intent i = new Intent();
+        /*Intent i = new Intent();
         i.setAction("com.example.service");
-        startService(i);
+        startService(i);*/
+        Intent mIntent = new Intent();
+        mIntent.setAction("com.example.service");//你定义的service的action
+        mIntent.setPackage(getPackageName());//这里你需要设置你应用的包名
+        startService(mIntent);
     }
 }
