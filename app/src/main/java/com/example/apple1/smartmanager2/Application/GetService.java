@@ -1,6 +1,7 @@
 package com.example.apple1.smartmanager2.Application;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
@@ -13,6 +14,7 @@ import org.json.JSONException;
  * Created by Huhu on 9/23/15.
  */
 public class GetService extends Service {
+    private Context mContext=this;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         new GetCount(new GetCount.SuccessCallBack() {

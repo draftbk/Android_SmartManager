@@ -9,7 +9,6 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -44,10 +43,10 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
         init();
         //设置头像
         GetPicture getPicture = new GetPicture(hanGetImage, managerData.getImagePath());
-        Log.d("test1", "managerData.getImagePath()" + "           " + managerData.getImagePath());
         getPicture.start();
         //设置监听
         setOnClick();
+        GetNotification();
 
     }
 
@@ -73,7 +72,7 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
             public void handleMessage(Message msg) {
                 // TODO Auto-generated method stub
                 Bitmap bitmap = (Bitmap) msg.obj;
-                Log.d("test1", "bitmap" + "           " + bitmap);
+
                 //把图片变圆
                 pictureChangeToRound pictureChangeToRound = new pictureChangeToRound();
                 bitmap = pictureChangeToRound.toRoundBitmap(bitmap);
@@ -134,4 +133,12 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
 
     }
 
+    /**
+     * 后台开启服务
+     */
+    void GetNotification() {
+        Intent i = new Intent();
+        i.setAction("com.example.service");
+        startService(i);
+    }
 }
