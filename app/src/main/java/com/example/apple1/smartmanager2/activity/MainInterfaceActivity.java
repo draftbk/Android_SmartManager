@@ -82,10 +82,7 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
 
             }
         };
-        //这是什么啊！！！！！！！突然就出现了！！！！！！
-//        Intent intent = new Intent();
-//        intent.setAction("com.example.service");
-//        startService(intent);
+
     }
 
     private void setOnClick() {

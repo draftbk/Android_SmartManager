@@ -1,29 +1,24 @@
-
-
-
-
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-    android:background="@drawable/menu_background">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/back">
 
-<com.example.apple1.smartmanager2.tools.SlidingMenu
-    android:id="@+id/menu"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent">
-
-    <LinearLayout
+    <com.example.apple1.smartmanager2.tools.SlidingMenu
+        android:id="@+id/menu"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <include layout="@layout/left_menu"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <FrameLayout android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <include layout="@layout/left_menu"/>
+
+            <FrameLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             </FrameLayout>
 
