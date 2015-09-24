@@ -39,6 +39,13 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_interface);
+        new GetCount(new GetCount.SuccessCallBack() {
+            @Override
+            public void onSuccess(String result) throws JSONException {
+                Application.INT_LAST = Integer.parseInt(result);
+
+            }
+        });
         //获取Application
         managerData = (ManagerData) getApplication();
         //设置初始界面
@@ -50,13 +57,7 @@ public class MainInterfaceActivity extends FragmentActivity implements View.OnCl
         getPicture.start();
         //设置监听
         setOnClick();
-        new GetCount(new GetCount.SuccessCallBack() {
-            @Override
-            public void onSuccess(String result) throws JSONException {
-                Application.INT_LAST = Integer.parseInt(result);
 
-            }
-        });
         GetNotification();
 
     }
