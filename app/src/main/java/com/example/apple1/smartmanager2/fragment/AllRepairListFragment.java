@@ -23,6 +23,7 @@ import com.example.apple1.smartmanager2.activity.AllRepairBillActivity;
 import com.example.apple1.smartmanager2.adapter.RepairAdapter;
 import com.example.apple1.smartmanager2.entity.RepairRecord;
 import com.example.apple1.smartmanager2.net.NetThread;
+import com.example.apple1.smartmanager2.net.Sql_URL;
 import com.example.apple1.smartmanager2.tools.AutoString;
 
 import org.json.JSONArray;
@@ -43,7 +44,7 @@ public class AllRepairListFragment extends Fragment {
 	private RepairAdapter adapter;
 	private ArrayList<RepairRecord> repairRecordList;
 	private Handler han;
-	private String url="http://1.smartprotecter.sinaapp.com/sm/manager_id02.php";
+	private String url= Sql_URL.my_url+"/sm/manager_id02.php";
 	private ManagerData managerData;
 	@Override
 	/**

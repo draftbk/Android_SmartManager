@@ -23,6 +23,7 @@ import com.example.apple1.smartmanager2.entity.RepairDetail;
 
 import com.example.apple1.smartmanager2.net.GetPicture;
 import com.example.apple1.smartmanager2.net.NetThread;
+import com.example.apple1.smartmanager2.net.Sql_URL;
 import com.example.apple1.smartmanager2.tools.AutoString;
 
 
@@ -41,8 +42,8 @@ public class AllRepairBillActivity extends Activity implements View.OnClickListe
     private ImageButton btnCall=null,btnback=null;
     private Button btnRepair;
     private String id;
-    private String url="http://1.smartprotecter.sinaapp.com/sm/service_id01.php";
-    private String urlRepair="http://1.smartprotecter.sinaapp.com/sm/choose_services.php";
+    private String url= Sql_URL.my_url+"/sm/service_id01.php";
+    private String urlRepair=Sql_URL.my_url+"/sm/choose_services.php";
     private Handler han,hanGetImage,hanRepair;
     private ManagerData managerData;
     RepairDetail repairDetail=new RepairDetail();
@@ -95,7 +96,7 @@ public class AllRepairBillActivity extends Activity implements View.OnClickListe
         //返回的按钮
         btnback=(ImageButton)findViewById(R.id.button_back);
         //获得manageData
-        managerData= (ManagerData) this.getApplication();
+        managerData= (ManagerData) getApplication();
 
         hanGetImage = new Handler() {
             @Override

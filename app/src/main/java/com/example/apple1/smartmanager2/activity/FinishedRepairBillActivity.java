@@ -22,6 +22,7 @@ import com.example.apple1.smartmanager2.entity.RepairDetail;
 
 import com.example.apple1.smartmanager2.net.GetPicture;
 import com.example.apple1.smartmanager2.net.NetThread;
+import com.example.apple1.smartmanager2.net.Sql_URL;
 import com.example.apple1.smartmanager2.tools.AutoString;
 
 
@@ -40,7 +41,7 @@ public class FinishedRepairBillActivity extends Activity implements View.OnClick
     private ImageButton btnCall=null,btnback=null;
     private Button btnCheckEvaluation;
     private String id;
-    private String url="http://1.smartprotecter.sinaapp.com/sm/service_id01.php";
+    private String url= Sql_URL.my_url+"/sm/service_id01.php";
     private Handler han,hanGetImage;
     RepairDetail repairDetail=new RepairDetail();
 

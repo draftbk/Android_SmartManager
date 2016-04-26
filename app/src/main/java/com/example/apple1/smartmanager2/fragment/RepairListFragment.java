@@ -2,27 +2,23 @@ package com.example.apple1.smartmanager2.fragment;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerTabStrip;
-import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Switch;
 
 
-import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
+import com.example.apple1.smartmanager2.activity.TextActivity;
 import com.example.apple1.smartmanager2.tools.SlidingMenu;
 
-import java.util.ArrayList;
 
 /**
  * Created by draft on 2015/7/21.
@@ -34,7 +30,7 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
     public Context context;
     public Activity activity;
     private Button myButton,allButton;
-    private ImageButton menuButton;
+    private ImageButton menuButton,searchButton;
     private SlidingMenu mLeftMenu;
 
     /**
@@ -64,11 +60,11 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
         myButton=(Button)view.findViewById(R.id.btn_my);
         allButton=(Button)view.findViewById(R.id.btn_all);
         menuButton=(ImageButton)view.findViewById(R.id.button_menu);
+        searchButton= (ImageButton) view.findViewById(R.id.button_search);
         mLeftMenu = (SlidingMenu) activity.findViewById(R.id.menu);
+
         //设置监听
         setOnClick();
-
-
 
         return view;
     }
@@ -77,6 +73,7 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
         myButton.setOnClickListener(this);
         allButton.setOnClickListener(this);
         menuButton.setOnClickListener(this);
+        searchButton.setOnClickListener(this);
     }
 
 
@@ -122,6 +119,12 @@ public class RepairListFragment extends Fragment implements View.OnClickListener
 
             case R.id.button_menu:
                 mLeftMenu.toggle();
+                break;
+
+            case R.id.button_search:
+                Log.d("loghahhahhaha","就是在这里写自然语言查询");
+                Intent intent =new Intent(activity,TextActivity.class);
+                startActivity(intent);
                 break;
 
 

@@ -22,6 +22,7 @@ import com.example.apple1.smartmanager2.Application.ManagerData;
 import com.example.apple1.smartmanager2.R;
 import com.example.apple1.smartmanager2.net.GetPicture;
 import com.example.apple1.smartmanager2.net.NetThread;
+import com.example.apple1.smartmanager2.net.Sql_URL;
 import com.example.apple1.smartmanager2.tools.AutoString;
 import com.example.apple1.smartmanager2.tools.DoubleClickJuage;
 import com.example.apple1.smartmanager2.tools.EncryptMD5;
@@ -40,8 +41,8 @@ public class LoginActivity extends Activity {
     private ImageView imageViewId;
     private ImageView imageViewHead;
     private EditText editId,editPassword;
-    private String url="http://1.smartprotecter.sinaapp.com/sm/login_m.php";
-    private String urlImagePath="http://1.smartprotecter.sinaapp.com/sm/icon_m.php";
+    private String url= Sql_URL.my_url+"/sm/login_m.php";
+    private String urlImagePath=Sql_URL.my_url+"/sm/icon_m.php";
     private String id,password;
     private Handler han;
     private String managerId,managerPhone,imagePath,nickName;

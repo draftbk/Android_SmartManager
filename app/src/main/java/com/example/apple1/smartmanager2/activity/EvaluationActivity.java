@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.apple1.smartmanager2.R;
 import com.example.apple1.smartmanager2.net.GetPicture;
 import com.example.apple1.smartmanager2.net.NetThread;
+import com.example.apple1.smartmanager2.net.Sql_URL;
 import com.example.apple1.smartmanager2.tools.AutoString;
 
 import org.json.JSONException;
@@ -27,7 +28,7 @@ public class EvaluationActivity extends Activity implements View.OnClickListener
     private TextView textGrade=null,textSuggestion=null;
     private ImageButton btnBack;
     private String id;
-    private String url="http://1.smartprotecter.sinaapp.com/sm/service_id03.php";
+    private String url= Sql_URL.my_url+"/sm/service_id03.php";
     private Handler han;
 
     protected void onCreate(Bundle savedInstanceState) {

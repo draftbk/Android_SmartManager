@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,19 +43,19 @@ public class NetThread extends Thread{
             //打开和URL之间的连接
             connection=(HttpURLConnection)realUrl.openConnection();
             //设置通用的请求属性
+
             connection.setRequestMethod("POST");
             connection.setConnectTimeout(8000);
+            // 设置 HttpURLConnection的字符编码
+            connection.setRequestProperty("Accept-Charset", "UTF-8");
+            connection.setRequestProperty("contentType", "utf-8");
             connection.setReadTimeout(8000);
             DataOutputStream out=new DataOutputStream(connection.getOutputStream());
-            Log.d("test","params"+"         "+params);
             out.writeBytes(params);
             InputStream in=connection.getInputStream();
-            Log.d("test","in"+"         "+in);
             //对获取的输入流进行读取
             BufferedReader reader=new BufferedReader(new InputStreamReader(in));
-            Log.d("test","reader"+"         "+reader);
             StringBuilder response= new StringBuilder();
-            Log.d("test","response"+"         "+response);
             String line;
             while ((line=reader.readLine())!=null)
             {
