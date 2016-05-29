@@ -243,7 +243,7 @@ public class TextActivity extends Activity implements View.OnClickListener {
                     content =content.substring(0,wordTool.getLocationI1(content))+content.substring(wordTool.getLocationI2(content),content.length());
                 }
 
-               Log.d("test","111111111"+location);
+               Log.d("test","11111111"+location);
                 List<Term> parse2 = ToAnalysis.parse(content);
                 for (int i=0;i<parse2.size();i++){
                     if (parse2.get(i).getNatureStr().equals("n")){
